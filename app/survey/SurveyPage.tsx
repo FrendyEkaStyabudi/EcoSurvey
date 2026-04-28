@@ -554,7 +554,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
             <div id="map"></div>
             <div class="map-footer">
               <div class="coord-display" id="coordDisplay" style="opacity:0.4">
-                <span>📍</span>
+                <span>🚩</span>
                 <span id="mapCoord">Klik peta untuk memilih lokasi</span>
               </div>
               <div style="display:flex; gap:10px;">
@@ -717,7 +717,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
         <h3>📊 Data Eksternal</h3>
         <p>Cuaca real-time, pola iklim & Pantauan Warga</p>
         <div class="right-loc" id="rightLoc">
-          <span class="pin">📍</span>
+          <span class="pin">🚩</span>
           <span class="txt" id="rightLocText">—</span>
         </div>
       </div>
@@ -1170,7 +1170,7 @@ async function doSearch() {
       var main = parts[0], sub = parts.slice(1,3).join(', ');
       var lat = parseFloat(item.lat), lon = parseFloat(item.lon);
       return '<div class="search-item" onclick="selectLoc(' + lat + ',' + lon + ')">' +
-             '<div class="search-item-icon">📍</div>' +
+             '<div class="search-item-icon">🚩</div>' +
              '<div class="search-item-text"><div class="search-item-main">' + main + '</div>' +
              '<div class="search-item-sub">' + (sub || item.display_name) + '</div></div>' +
              '<div class="search-item-coord">' + lat.toFixed(3) + ', ' + lon.toFixed(3) + '</div></div>';
