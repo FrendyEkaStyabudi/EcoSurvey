@@ -30,7 +30,7 @@ const features = [
     title: "Analisis AI: Skor & Rekomendasi",
     meta: "6 fitur • AI",
     desc: "Menghasilkan skor kelayakan serta rekomendasi, termasuk kepadatan, akses jalan, drainase, hijau, dan risiko bencana.",
-    Image: "https://i.imgur.com/p8VodTq.png",
+    Image: "https://i.imgur.com/iCL9PEg.png",
   },
   {
     icon: "🌦️",
@@ -44,7 +44,7 @@ const features = [
     title: "Zonasi Riwayat & Pantauan Warga",
     meta: "6 fitur • Insight",
     desc: "Riwayat analisis divisualisasikan sebagai zona warna di peta, plus pantauan berita berbasis lokasi untuk mendeteksi laporan darurat.",
-    Image: "https://i.imgur.com/p8VodTq.png",
+    Image: "https://i.imgur.com/6BRZEH8.png",
   },
 ];
 

@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { createClient } from "@supabase/supabase-js"; // Import Supabase
 
-// Inisialisasi Supabase Client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Supabase initialization inside POST
 
 export async function POST(req: NextRequest) {
   try {
@@ -274,27 +271,33 @@ Kembalikan HANYA JSON valid. Jangan hapus field yang sudah ada, hanya lengkapi.`
     // ==========================================
     // PROSES MENYIMPAN DATA KE SUPABASE
     // ==========================================
-    const { data: dbData, error: dbError } = await supabase
-      .from("surveys")
-      .insert([
-        {
-          lat: lat,
-          lng: lng,
-          score: aiData.score,
-          kepadatan: aiData.kepadatan,
-          jalan: aiData.jalan,
-          drainase: aiData.drainase,
-          hijau: aiData.hijau,
-          bencana: aiData.bencana,
-          // Simpan ringkasan saja agar popup/riwayat tetap singkat.
-          kesimpulan: aiData.kesimpulan_ringkas || aiData.kesimpulan || "",
-        },
-      ]);
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    
+    if (supabaseUrl && supabaseKey) {
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { data: dbData, error: dbError } = await supabase
+        .from("surveys")
+        .insert([
+          {
+            lat: lat,
+            lng: lng,
+            score: aiData.score,
+            kepadatan: aiData.kepadatan,
+            jalan: aiData.jalan,
+            drainase: aiData.drainase,
+            hijau: aiData.hijau,
+            bencana: aiData.bencana,
+            // Simpan ringkasan saja agar popup/riwayat tetap singkat.
+            kesimpulan: aiData.kesimpulan_ringkas || aiData.kesimpulan || "",
+          },
+        ]);
 
-    if (dbError) {
-      console.error("Gagal menyimpan ke Supabase:", dbError);
-      // Anda tetap bisa mengembalikan respons AI ke pengguna meskipun gagal simpan ke DB,
-      // atau memunculkan error. Di sini kita memunculkan peringatan di server log saja.
+      if (dbError) {
+        console.error("Gagal menyimpan ke Supabase:", dbError);
+      }
+    } else {
+      console.warn("Kredensial Supabase tidak lengkap. Melewati penyimpanan data survei ke database.");
     }
 
     // Mengembalikan hasil AI ke frontend (browser)
