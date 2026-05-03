@@ -28,7 +28,7 @@ const users = [
     icon: "🧭",
     title: "Koordinator / Supervisor",
     desc: "Memantau kualitas input, menyamakan standar penilaian, dan melihat tren area berdasarkan zonasi.",
-    Image: "https://porosinformatif.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-07-at-14.43.06-696x522.jpeg",
+    Image: "https://manpro.id/blog/wp-content/uploads/2022/07/manajer-proyek-dan-konstruksi-600x600.jpg",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function UserSection() {
             AI dan data pendukung, agar tim bisa menyusun prioritas penanganan
             dengan lebih cepat, jelas, dan konsisten.
           </p>
-          <div className="mini">
+          <div className="mini pl-9">
             <div className="mini-item">
               <div className="b">1</div>
               <div>

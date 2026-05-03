@@ -92,7 +92,7 @@ export default function FAQSection() {
           </div>
         </div>
 
-        <div className="faq-list" aria-label="Daftar FAQ">
+        <div className="faq-list md:rounded-lg" aria-label="Daftar FAQ">
           {faqs.map((faq, i) => (
             <div
               key={i}
@@ -105,10 +105,10 @@ export default function FAQSection() {
                 aria-expanded={openIdx === i ? "true" : "false"}
               >
                 <span className="faq-q-text">
-                  <span className="tag">{faq.tag}</span>
+                  <span className="tag rounded-full w-max">{faq.tag}</span>
                   <span>{faq.question}</span>
                 </span>
-                <span className="chev">⌄</span>
+                <span className="chev">V</span>
               </button>
               <div
                 className="faq-a"
